@@ -46,9 +46,9 @@ public class sendMailServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
 		String subject = request.getParameter("subject");
-		String message = request.getParameter("message");
-		String host = email;
-		final String user = "thang.nguyencong@vti.com.vn";// change accordingly
+		String message1 = request.getParameter("message");
+		String host = "mail.javatpoint.com";
+		final String user = "nguyencongthang02091996@gmail.com";// change accordingly
 		final String password = "Congthang0209!";// change accordingly
 
 		String to = email;// change accordingly
@@ -66,14 +66,14 @@ public class sendMailServlet extends HttpServlet {
 
 		// Compose the message
 		try {
-			MimeMessage message1 = new MimeMessage(session);
-			message1.setFrom(new InternetAddress(user));
-			message1.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message1.setSubject(subject);
-			message1.setText(message);
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(user));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject(subject);
+			message.setText(message1);
 
 			// send the message
-			Transport.send(message1);
+			Transport.send(message);
 
 			System.out.println("message sent successfully...");
 
